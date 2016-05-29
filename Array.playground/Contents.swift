@@ -229,4 +229,12 @@ var anotherThreeDoubles = [Double](count: 3, repeatedValue: 2.5)
 
 var sixDoubles = threeDoubles + anotherThreeDoubles
 
+let arr = ["a","b","c"]
 
+let indexOfA = arr.indexOf("a") // 0
+let indexOfB = arr.indexOf("b") // 1
+let indexOfD = arr.indexOf("d") // nil
+
+let arr1 = [10, 3,24]
+let indexOf3 = arr1.indexOf(3)
+let indexOf2 = arr1.indexOf(2)

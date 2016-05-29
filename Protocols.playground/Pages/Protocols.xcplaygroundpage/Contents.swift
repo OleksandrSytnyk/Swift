@@ -491,6 +491,47 @@ extension Record: CustomStringConvertible {
 print(record)
 
 
+class Cookie: NSObject {
+    var column: Int = 0
+    var row: Int = 0
+}
+/*As in swift 2 NSObject already conforms to Equatable you don't need to declare this:
+func == (lhs: Cookie, rhs: Cookie) -> Bool {
+    return lhs.column == rhs.column && lhs.row == rhs.row
+}*/
+let cookie1 = Cookie()
+cookie1.column = 1
+cookie1.row = 2
+
+let cookie2 = Cookie()
+cookie2.column = 1
+cookie2.row = 3
+cookie2 == cookie1
+
+class Cookie1:NSObject{
+    var column: Int = 0
+    var row: Int = 0
+    
+    //..........
+    
+    override func isEqual(object: AnyObject?) -> Bool {
+        guard let rhs = object as? Cookie1 else {
+            return false
+        }
+        let lhs = self
+        
+        return lhs.column == rhs.column + 1
+    }
+}
+let cookie3 = Cookie1()
+cookie3.column = 1
+cookie3.row = 2
+let cookie4 = Cookie1()
+cookie4.column = 0
+cookie4.row = 2
+cookie3 == cookie4
+
+
 /*Challenge A: Bike protocols
 Implement Comparable and Hashable on the Bike class. Create a Set of bikes of various wheel numbers and sizes, then sort them by their wheel size.
 Note: You may simply use wheelSize to calculate hashValue. If you'd like, add another property of your choice to Bike that can make it even more unique.*/

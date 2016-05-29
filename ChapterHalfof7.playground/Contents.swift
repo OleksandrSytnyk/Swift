@@ -91,7 +91,7 @@ operateOnNumbers(4, 2, operation: addFunction)
 
 operateOnNumbers(4, 2, operation: { (a: Int, b: Int) -> Int in
     return a + b })
-//the same result here but all the code is one line
+//the same result here but all the code is one line. But without return it does too
 operateOnNumbers(4, 2, operation: {
     $0 + $1 })
 
@@ -111,10 +111,10 @@ var check = {
 var f = check() + 1
 
 let check1 = {
-    return (1, 2)
+    return (1, 2, "man")
 }
 f = check1().0
-
+check1().2
 var counter = 0
 
 let incrementCounter2: () -> Int = {
@@ -185,3 +185,9 @@ print(mathSum(5) {$0 * $0})
 
 let number1 = 10
 //squareOfNumber(number: 10)
+
+
+let action = UIAlertAction(title: "OK", style: .Default,
+    handler: { action in
+        2*2
+})

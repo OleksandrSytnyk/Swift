@@ -250,12 +250,37 @@ default:
 
 let count = 10
 var sum1 = 0
-for var i = 1; i <= count; i++ {
+for var i = 1; i <= count; i++ {//that has a loop counter named i starting at 1
     sum1 += i
 }
 sum1
 //for <INITIAL CONDITION>; <LOOP CONDITION>; <ITERATION CODE> {<LOOP CODE> }
 //for loop
+
+/*for i in stride(from: 0, to: 5, by: 2) {
+    print(i)
+}*/
+// это должно работать по книжке, но не работает
+
+class  Item {
+    var checked = true
+}
+let items = [Item]()
+var count2 = 0
+for item in items {
+    if !item.checked {
+        count2 += 1 }
+}
+
+for item in items where !item.checked {
+    count2 += 1
+}
+//The two above are the same
+
+var uncheckedItems = items.filter { item in !item.checked }
+//it's functional programming to get a list of all the unchecked ChecklistItem objects.
+//Loops can often be replaced by functional programming constructs such as map, filter, or reduce. These are functions that operate on a collection, perform some code for each item, and return a new collection with the results.
+//There is a continue statement that is somewhat the opposite of break. It doesn’t exit the loop but immediately skips to the next iteration. You use continue to say, “I’m done with the current item, let’s look at the next one.”
 
 var sum2 = 0
 for i in 1...count {
@@ -271,6 +296,15 @@ for _ in 0..<count {
 }
 sum3
 //This code doesn't require the loop variable; the loop simply needs to run a certain number of times.
+
+/*func countUncheckedItems() -> Int {
+    var count = 0
+    for item in items where !item.checked {
+        count += 1
+    }
+    return count
+}*/
+
 
 var sum4 = 1
 while sum4 < 1000 {
