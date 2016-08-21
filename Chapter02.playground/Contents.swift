@@ -1,3 +1,63 @@
+import UIKit
+2/3
+2%3
+4%3
+ceil(1.1)//округляет в сторону большего ближайшего целого
+Int(0.7)//округляется в сторону меньшего ближайшего целого
+
+
+struct Point {
+    var x = 0.0, y = 0.0
+}
+struct Size {
+    var width = 0.0, height = 0.0
+}
+struct Rect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+        get {
+            let centerX = origin.x + (size.width / 2)
+            let centerY = origin.y + (size.height / 2)
+            return Point(x: centerX, y: centerY)
+        }
+        set(newCenter) {
+            origin.x = newCenter.x - (size.width / 2)
+            origin.y = newCenter.y - (size.height / 2)
+        }
+    }
+}
+var square = Rect(origin: Point(x: 0.0, y: 0.0),
+    size: Size(width: 10.0, height: 10.0))
+let initialSquareCenter = square.center
+initialSquareCenter.x
+square.center = Point(x: 15.0, y: 15.0)
+print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+// Prints "square.origin is now at (10.0, 10.0)"
+
+struct AlternativeRect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+        get {
+            let centerX = origin.x + (size.width / 2)
+            let centerY = origin.y + (size.height / 2)
+            return Point(x: centerX, y: centerY)
+        }
+        set {
+            origin.x = newValue.x - (size.width / 2)
+            origin.y = newValue.y - (size.height / 2)
+        }
+    }
+}//это означает, что вместо set(newCenter) можно писать просто set и использовать newValue(это зарегистрированное слово)
+
+struct Cuboid {
+    var width = 0.0, height = 0.0, depth = 0.0
+    var volume: Double {
+        return width * height * depth
+    }
+}
+//A computed property with a getter but no setter is known as a read-only computed property. You can simplify the declaration of a read-only computed property by removing the get keyword and its braces.
 
 
 let myAge: Int = 53

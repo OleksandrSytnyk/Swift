@@ -5,12 +5,14 @@ import UIKit
 let numbers: Array<Int>
 let inferredNumbers = Array<Int>()
 let alsoInferredNumbers = [Int]()
-let array3: [String] = []
+var array3: [String] = []
 var array2 = []
 array2 = ["ds", 1, 15]
 //создан массив типа AnyObject. Но его нельзя увеличить или изменить is get only
 array2[0]
 array2[1]
+//array2.append("") this doesn't work
+array3.append("")
 
 let evenNumbers = [2, 4, 6, 8]
  let allZeros = [Int](count: 5, repeatedValue: 0)
@@ -238,3 +240,14 @@ let indexOfD = arr.indexOf("d") // nil
 let arr1 = [10, 3,24]
 let indexOf3 = arr1.indexOf(3)
 let indexOf2 = arr1.indexOf(2)
+
+let value = "go ah/ead"
+
+var fromValueArray = String(value).characters.split{$0 == " " || $0 == "/"}.map(String.init)
+
+let a = fromValueArray[0]
+let b = fromValueArray[1]
+let c = fromValueArray[2]
+
+value.componentsSeparatedByString(" ")//Здесь сепаратор может быть только один, но этот метод работает гораздо быстрее, чем предыдущий
+
